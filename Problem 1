@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+#define ROWS 5
+#define COLS 20
+
+int is_palindrome(char word[]) {
+    int length = strlen(word);
+    for (int i = 0; i < length / 2; i++) {
+        if (word[i] != word[length - i - 1]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    char words[ROWS][COLS];
+    
+    printf("Enter %d words (each with max length %d):\n", ROWS, COLS - 1);
+    for (int i = 0; i < ROWS; i++) {
+        printf("Word %d: ", i + 1);
+        scanf("%s", words[i]);
+    }
+
+    for (int i = 0; i < ROWS; i++) {
+        if (is_palindrome(words[i])) {
+            printf("%s: Palindrome\n", words[i]);
+        } else {
+            printf("%s: Not Palindrome\n", words[i]);
+        }
+    }
+
+    return 0;
+}
